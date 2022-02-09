@@ -5,8 +5,8 @@ from djmoney.models.fields import MoneyField
 
 class AbstractInstance(models.Model):
     is_active = models.BooleanField(default=True, verbose_name='is_active')
-    change_date = models.DateField(auto_now=datetime.now().time(), verbose_name='change_date')
-    create_date = models.DateField(auto_now_add=datetime.now().time(), verbose_name='create_date')
+    change_date = models.DateField(auto_now=True, verbose_name='change_date')
+    create_date = models.DateField(auto_now_add=True, verbose_name='create_date')
 
     class Meta:
         abstract = True
@@ -15,7 +15,7 @@ class AbstractInstance(models.Model):
 class Offer(models.Model):
     max_price = MoneyField(max_digits=10, decimal_places=2, default_currency='USD', verbose_name='max_price')
     car = models.ForeignKey('car.Car', on_delete=models.CASCADE, verbose_name='car_to_offer')
-    sell_date = models.DateField(auto_now_add=datetime.now().time(), verbose_name='sell_date')
+    sell_date = models.DateField(auto_now_add=True, verbose_name='sell_date')
 
     provider = models.ForeignKey(
         'provider.Provider',
