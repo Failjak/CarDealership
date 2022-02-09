@@ -17,10 +17,47 @@ class Offer(models.Model):
     car = models.ForeignKey('car.Car', on_delete=models.CASCADE, verbose_name='car_to_offer')
     sell_date = models.DateField(auto_now_add=datetime.now().time(), verbose_name='sell_date')
 
+    provider = models.ForeignKey(
+        'provider.Provider',
+        blank=True,
+        null=True,
+        on_delete=models.SET_NULL,
+        related_name='provider_offer',
+    )
+    dealer = models.ForeignKey(
+        'dealer.Dealer',
+        blank=True,
+        null=True,
+        on_delete=models.SET_NULL,
+        related_name='dealer_offer',
+    )
+    customer = models.ForeignKey(
+        'customer.Customer',
+        on_delete=models.SET_NULL,
+        blank=True,
+        null=True,
+        related_name='customer_offer'
+    )
 
-class Discount(AbstractInstance, models.Model):
+
+class Discount(AbstractInstance):
     time_start = models.DateField(auto_now_add=datetime.now().time(), verbose_name='time_start')
     time_end = models.DateField(auto_now_add=datetime.now().time(), verbose_name='time_end')
     discount_cars = models.ManyToManyField('car.Car', verbose_name='discount_cars')
     percent = models.PositiveSmallIntegerField(verbose_name='stock_percentage')
     description = models.TextField(max_length=500, verbose_name='description')
+
+    provider = models.ForeignKey(
+        'provider.Provider',
+        blank=True,
+        null=True,
+        on_delete=models.SET_NULL,
+        related_name='provider_discount',
+    )
+    dealer = models.ForeignKey(
+        'dealer.Dealer',
+        blank=True,
+        null=True,
+        on_delete=models.SET_NULL,
+        related_name='dealer_discount',
+    )
