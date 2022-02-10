@@ -1,6 +1,6 @@
 from django.db import models
 
-from core.models import Offer, AbstractInstance, Discount
+from car_dealership.core import Offer, AbstractInstance, Discount
 
 
 class Provider(AbstractInstance, models.Model):

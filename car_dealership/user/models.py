@@ -1,7 +1,7 @@
 from django.db import models
 from djmoney.models.fields import MoneyField
 
-from core.models import AbstractInstance
+from car_dealership.core import AbstractInstance
 
 
 class User(AbstractInstance, models.Model):

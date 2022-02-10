@@ -2,7 +2,7 @@ from django.db import models
 from django_countries.fields import CountryField
 from djmoney.models.fields import MoneyField
 
-from core.models import AbstractInstance, Discount, Offer
+from car_dealership.core import AbstractInstance, Discount, Offer
 
 
 class Dealer(AbstractInstance, models.Model):
