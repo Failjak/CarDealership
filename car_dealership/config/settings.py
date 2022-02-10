@@ -38,13 +38,13 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    'djmoney',
     'django_countries',
+    'djmoney',
 
     'provider',
+    'customer',
     'dealer',
     'core',
-    'user',
     'car',
 ]
 
