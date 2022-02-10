@@ -1,7 +1,7 @@
 from django.db import models
 from djmoney.models.fields import MoneyField
 
-from car_dealership.core.models import AbstractInstance
+from core.models import AbstractInstance
 
 
 class CarConfiguration(AbstractInstance):

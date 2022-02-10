@@ -1,8 +1,10 @@
 # pull official base image
-FROM python:3.9.6-alpine
+FROM python:3.8.3-alpine
 
 # set work directory
-WORKDIR /usr/src/app
+WORKDIR /usr/src/app/
+
+COPY requirements.txt /usr/src/app
 
 # set environment variables
 ENV PYTHONDONTWRITEBYTECODE 1
@@ -14,16 +16,11 @@ RUN apk update \
 
 # install dependencies
 RUN pip install --upgrade pip
-COPY ./requirements.txt .
 RUN pip install -r requirements.txt
 
 # copy entrypoint.sh
-COPY ./entrypoint.sh .
-RUN sed -i 's/\r$//g' /usr/src/app/entrypoint.sh
-RUN chmod +x /usr/src/app/entrypoint.sh
-
-# copy project
-COPY . .
+COPY . /usr/src/app
+WORKDIR /usr/src/app/car_dealership
 
 # run entrypoint.sh
-ENTRYPOINT ["/usr/src/app/entrypoint.sh"]
+ENTRYPOINT ["/bin/sh", "entrypoint.sh"]

@@ -2,3 +2,4 @@ Django==4.0.2
 django-money
 django_countries
 psycopg2-binary==2.9.1
+tzdata
