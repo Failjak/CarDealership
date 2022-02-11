@@ -5,7 +5,7 @@ from django.db import models
 
 
 class Account(models.Model):
-    user = models.OneToOneFieldf(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
     is_active = models.BooleanField(default=True)
 
     def __str__(self):
