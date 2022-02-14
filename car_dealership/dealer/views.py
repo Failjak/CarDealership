@@ -3,6 +3,7 @@ from rest_framework import viewsets
 
 from .models import Dealer
 from .serializer import DealerSerializer, DealerCreateSerializer
+from .filters import DealerFilter
 
 
 class DealerViewSet(mixins.CreateModelMixin,
@@ -17,3 +18,6 @@ class DealerViewSet(mixins.CreateModelMixin,
             return DealerSerializer
         else:
             return DealerCreateSerializer
+
+    filter_class = DealerFilter
+    ordering_fields = ['name', 'balance', 'cars__brand', 'users__user__name']
