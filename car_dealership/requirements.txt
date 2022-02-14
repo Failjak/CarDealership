@@ -7,3 +7,4 @@ djangorestframework_simplejwt
 djangorestframework
 drf_yasg
 django-debug-toolbar==3.2.4
+django-filter

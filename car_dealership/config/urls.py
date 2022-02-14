@@ -42,6 +42,7 @@ urlpatterns = [
     path('api/', include('core.urls')),
     path('api/', include('customer.urls')),
     path('api/', include('dealer.urls')),
+    path('api/', include('provider.urls')),
     path('auth/', include('accounts.urls')),
 
     path('swagger(?P<format>\.json|\.yaml)$', schema_view.without_ui(cache_timeout=0), name='schema-json'),

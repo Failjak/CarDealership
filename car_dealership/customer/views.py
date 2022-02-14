@@ -3,6 +3,7 @@ from rest_framework import viewsets
 
 from .models import Customer
 from .serializer import CustomerCreateSerializer, CustomerSerializer
+from .filters import CustomerFilter
 
 
 class CustomerViewSet(mixins.CreateModelMixin,
@@ -17,3 +18,6 @@ class CustomerViewSet(mixins.CreateModelMixin,
             return CustomerSerializer
         else:
             return CustomerCreateSerializer
+
+    filter_class = CustomerFilter
+    ordering_fields = ['name', 'balance']

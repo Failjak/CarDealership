@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'rest_framework_simplejwt',
     'django_countries',
     'rest_framework',
+    'django_filters',
     'debug_toolbar',
     'drf_yasg',
     'djmoney',
@@ -147,10 +148,14 @@ CORS_ORIGIN_WHITELIST = [
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
-    )
+    ),
+    'DEFAULT_FILTER_BACKENDS': (
+        'django_filters.rest_framework.DjangoFilterBackend',
+        'rest_framework.filters.OrderingFilter',
+    ),
 }
 
-# AUTH_USER_MODEL = 'accounts.User'
+# AUTH_USER_MODEL = 'accounts.Account'
 
 
 # Debug toolbar settings
@@ -173,8 +178,10 @@ if DEBUG:
         'debug_toolbar.panels.redirects.RedirectsPanel',
     ]
 
+
     def show_toolbar(request):
         return True
+
 
     DEBUG_TOOLBAR_CONFIG = {
         'INTERCEPT_REDIRECTS': False,
